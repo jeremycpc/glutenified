@@ -14,8 +14,8 @@ function Player:init()
 end
 
 function Player:collides(bread)
-  if (self.x + 2) + (self.width - 4) >= bread.x and self.x + 2 <= bread.x + BREAD_WIDTH then
-    if (self.y + 2) + (self.height - 4) >= bread.y and self.y + 2 <= bread.y + BREAD_HEIGHT then
+  if (self.x + 4) + (self.width - 8) >= bread.x and self.x + 4 <= bread.x + BREAD_WIDTH then
+    if (self.y + 4) + (self.height - 8) >= bread.y and self.y + 4 <= bread.y + BREAD_HEIGHT then
       return true
     end
   end
@@ -28,6 +28,7 @@ function Player:update(dt)
 
   if love.keyboard.wasPressed('space') or love.mouse.wasPressed(1) then
     self.dy = -5
+    sounds['jump']:play()
   end
 
   self.y = self.y + self.dy

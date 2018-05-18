@@ -1,6 +1,6 @@
 BreadPair = Class{}
 
-local GAP_HEIGHT = 90
+local GAP_HEIGHT = math.random(70, 90)
 
 function BreadPair:init(y)
   self.score = false

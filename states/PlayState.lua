@@ -2,7 +2,7 @@ PlayState = Class{__includes = BaseState}
 
 
 BREAD_SPEED = 60
-BREAD_WIDTH = 1
+BREAD_WIDTH = 70
 BREAD_HEIGHT = 288
 
 PLAYER_WIDTH = 38
@@ -35,6 +35,7 @@ function PlayState:update(dt)
       if pair.x + BREAD_WIDTH < self.player.x then
         self.score = self.score + 1
         pair.scored = true
+        sounds['score']:play()
       end
     end
     pair:update(dt)
@@ -49,6 +50,8 @@ function PlayState:update(dt)
   for k, pair in pairs(self.breadPairs) do
     for l, bread in pairs(pair.breads) do
       if self.player:collides(bread) then
+        sounds['explosion']:play()
+        sounds['hurt']:play()
         gStateMachine:change('score', {
           score = self.score
         })
@@ -59,6 +62,8 @@ function PlayState:update(dt)
   self.player:update(dt)
 
   if self.player.y > VIRTUAL_HEIGHT - 15 then
+    sounds['explosion']:play()
+    sounds['hurt']:play()
     gStateMachine:change('score', {
       score = self.score
     })

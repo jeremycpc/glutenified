@@ -1,14 +1,14 @@
 Bread = Class{}
 
-local BREAD_IMAGE = love.graphics.newImage('bread.png')
+local BREAD_IMAGE = love.graphics.newImage('bread3.png')
+
+
 
 function Bread:init(orientation, y)
   self.x = VIRTUAL_WIDTH + 64
   self.y = y
-
   self.width = BREAD_WIDTH
   self.height = BREAD_HEIGHT
-
   self.orientation = orientation
 end
 
